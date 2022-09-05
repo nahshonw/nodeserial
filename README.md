@@ -3,3 +3,8 @@
 ## Installation
 
 - npm init
+
+## Git Flow
+- git add .
+- git commit -m "HOW TO READ DOCs"
+- git push
