@@ -1,0 +1,5 @@
+stty 1200 < /dev/ttyUSB0
+stty 1200 -F /dev/ttyUSB0
+
+Write to: echo -ne '\033[2J' > /dev/ttyUSB0
+Read from: cat -v < /dev/ttyUSB0
