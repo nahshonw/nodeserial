@@ -1,5 +1,7 @@
-stty 1200 < /dev/ttyUSB0
-stty 1200 -F /dev/ttyUSB0
+This will set the baud rate to 19200, 8 bits, 1 stop bit, no parity:
+stty -F /dev/ttyUSB0 19200 cs8 -cstopb -parenb
 
 Write to: echo -ne '\033[2J' > /dev/ttyUSB0
 Read from: cat -v < /dev/ttyUSB0
+
+#Now need to add the protocol for the IEE VFD 6 x 40 
