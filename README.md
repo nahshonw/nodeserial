@@ -4,7 +4,9 @@
 
 - npm init
 
-## Git Flow
+## Git Flow 
+- git status
 - git add .
+- git status
 - git commit -m "HOW TO READ DOCs"
 - git push

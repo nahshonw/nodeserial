@@ -1,0 +1,133 @@
+IEE VFD
+
+	4.0 OPERATION
+	4.1 Loading ASCII Character Data
+	All printing characters are located in standard ASCII code locations from 20 (HEX) to 7F (HEX). Control character assignments are as follows.
+	4.2 Control Codes (Serial and Parallel Operation) FOR PARALLEL OPERATION: INSTRUCTIONS FOR Ao=O (PULSE WR LOW, CS=0)
+	NOTE: CARE SHOULD BE TAKEN NOT TO SEND UNDEFINED CONTROL OR COMMAND CODES TO THE DISPLAY MODULE AS THIS MAY CAUSE A SOFTWARE MALFUNCTION OF THE MODULE,
+04, 00	TRANSMIT DISPLAY CONTENTS BACK 1'0 HOST (Two Byte Command): See Control Format (4,3)
+7	AUDIBLE BEI,L OU1'PU1' ( 150mS)
+8	BACKSPACE CURSOR LOCATION ONE POSITION
+9	ADVANCE CURSOR LOCATION ONE POSITION
+0A	LINE FEED (vertical scroll from bottom line; cursor positions to the left-most grid)
+0B	BEGIN CHARACTER BLINK FIELD
+0C	END CHARAC'l'ER BLINK FIELD
+0D	CARRIAGE RETURN (returns cursor to left-most character position of the same line; does not clear display)
+0E	MAKE CURSOR INDICATOR INVISIBLE (the cursor location counter continues to function but there is no visible indicator of next character location)
+0F	$ MAKE CURSOR INDICATOR VISIBLE
+<10>	VERTICAL SCROLL MODE (after display has been filled)
+<12>	$ OVERWRITE MODE (overwrites the last character after display has been filled)
+14	RESET (If using serial interface and DTR is not used, a delay of 50mS must be provided before sending data)
+15	INSER1' ON/OFF ( Insert character at the present cursor location)
+18	START EX'l'ERNAL FON'!' LOAD; See Control F'ormat (4,3)
+19	First byte of certain multibyte COMMANDS (See below)
+[lA]	SELECT SCIENTIFIC CHARACTER SET
+[lC]	$ SELECT ENGLISH CHARACTER SET (U.S. ASCII-7)
+[lD]	SELECT GENERAL EUROPEAN CHARACTER SET ECMA-7)
+[lE]	SELECT SCANDINAVIAN CHARACTER SET (ECMA-7)
+[lF]	SELECT GERMAN CHARACTER SET (ECMA-7)
+20-7F	CHARACTER SET (see CHARACTER CHART)
+	$ Display automatically defaults to these conditions after power-up and reset.
+	<> These instructions are mutually exclusive.
+	[] Character set control affects ASCII characters 5B, 5c, 5D, 5F, 23 & 60.
+	Additional commands may be written, preceded by 19 HEX&. They are as follows:
+\x19\x0B	MOVE CURSOR UP ONE LINE
+\x19\x0C	$ DISPLAY CLEAR
+\x19\x0E	$ CURSOR HOME
+\x19\x10	DELETE CHARACTER AT CURSOR
+\x19\x11	POSITION CURSOR AT LINE XX 2-BYTE INSTRUCTION (i.e. llH $ Line Number 0-5)
+\x19\x13	POSITION CURSOR AT COLUMN XX 2-BYTE INSTRUCTION (i.e. 13H $ Column Number 0-27)
+\x19\x41	& PREPARE TO READ CURSOR LOCATION VALUE (two bytes will be sent to the host; first byte is the line number and the second byte is the column number)
+\x19\x42	& PREPARE TO READ DATA AT PRESENT CURSOR LOCATION
+\x19\x43	& PREPARE TO READ DATA A1' PRESENT CURSOR LOCATION AND INCREMENT CURSOR
+\x19\x4C	DISPLAY BLANK
+\x19\x4D	DISPLAY DIM ( 25%)
+\x19\x4E	DISPLAY BRIGHT (50%)
+\x19\x4F	$DISPl,AY BRIGHTNESS ( 100%)
+	$ Display automatically defaults to these conditions after power-up and reset.
+	& "PREPARE TO READ commands should be followed with a "READ_DATA" FROM DISPLAY M0DULE" operation, which is accomplished by pulsing RD Low when A0=0 and CS=0 for Parallel Operation.For Serial Operation when DTR is high send 19 HEX to the unit's RXD. When DTR is high again, send the READ code (41 HEX, 42 HEX, or 43 HEX) to unit's RXD. Set CTS high. Receive data via the unit's TXD. Repeat as required.
+	
+	
+	
+	Samsung VFD
+	$	8	$		Move cursor left
+$	9	$		Move cursor right
+$	0A	$		Move cursor down
+$	1F	$	0A	Move cursor up
+$	0B	$		Move cursor to home position
+$	0D	$		Move cursor to left-end position
+$	1F	$	0D	Move cursor to right-end position
+$	1F	$	42	Move cursor to bottom position
+$	1F	$	24	Move cursor to specified position
+$	0C	$		Clear display screen
+$	18	$		Clear cursor line
+$	1B	$	40	Initialize display
+$	1B	$	25	User-defined font Select/Cancel
+$	1B	$	26	Define user-definable font
+$	1B	$	3F	Cancel user-defined font
+$	1B	$	3D	Select peripheral device
+$	1B	$	52	Internation character set
+$	1B	$	74	Select character code table
+$	1F	$	1	Overwrite mode
+$	1F	$	2	Vertical scroll mode
+$	1F	$	3	Horizontal scroll mode
+$	1F	$	45	Blinking Select/Cancel
+$	1F	$	58	Brightness adjustment (Dimming)
+$	1F	$	40	Execute self-test
+$	1F	$	23	Turn annunciator on/off
+				
+				
+
+
+Cypress Keypad
+
+LED RED 1 100%
+LEDRED 1 100\x0d\x0a
+LED RED 2 100%
+LEDRED 2 100\x0d\x0a
+LED RED 3 100%
+LEDRED 3 100\x0d\x0a
+LED RED 4 100%
+LEDRED 4 100\x0d\x0a
+LED RED 5 100%
+LEDRED 5 100\x0d\x0a
+LED RED 6 100%
+LEDRED 6 100\x0d\x0a
+LED RED 7 100%
+LEDRED 7 100\x0d\x0a
+LED RED 8 100%
+LEDRED 8 100\x0d\x0a
+LED RED 9 100%
+LEDRED 9 100\x0d\x0a
+LED BLUE 1 100%
+LEDBLUE 1 100\x0d\x0a
+LED BLUE 2 100%
+LEDBLUE 2 100\x0d\x0a
+LED BLUE 3 100%
+LEDBLUE 3 100\x0d\x0a
+LED BLUE 4 100%
+LEDBLUE 4 100\x0d\x0a
+LED BLUE 5 100%
+LEDBLUE 5 100\x0d\x0a
+LED BLUE 6 100%
+LEDBLUE 6 100\x0d\x0a
+LED BLUE 7 100%
+LEDBLUE 7 100\x0d\x0a
+LED BLUE 8 100%
+LEDBLUE 8 100\x0d\x0a
+LED BLUE 9 100%
+LEDBLUE 9 100\x0d\x0a
+ALL LED RED OFF
+LEDREDS 0\x0d\x0a
+ALL LED BLUE OFF
+LEDBLUES 0\x0d\x0a
+LED DIMMING MODE TOGGLE
+LEDSHOW TOGGLE\x0d\x0a
+ALL LED BLUE 10%
+LEDBLUES 10\x0d\x0a
+ALL LED BLUE OFF
+LEDBLUES 0\x0d\x0a
+Open Relay
+RELAY 1 OPEN\x0d\x0a
+Close Relay
+RELAY 1 CLOSE\x0d\x0a
